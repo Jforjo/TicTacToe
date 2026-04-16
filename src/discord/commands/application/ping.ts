@@ -28,14 +28,14 @@ export default async function(
                 components: [
                     {
                         type: ComponentType.TextDisplay,
-                        content: "**Pong!**",
+                        content: "## Pong!",
                     },
                     {
                         type: ComponentType.Separator
                     },
                     {
                         type: ComponentType.TextDisplay,
-                        content: `Response time: ${Date.now() - timestamp.getTime()}ms • <t:${Math.floor(Date.now() / 1000)}:F>`
+                        content: `-# Response time: ${Date.now() - timestamp.getTime()}ms • <t:${Math.floor(Date.now() / 1000)}:F>`
                     }
                 ]
             }
