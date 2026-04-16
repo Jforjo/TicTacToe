@@ -38,19 +38,19 @@ export default async function(
                         components: [
                             {
                                 type: ComponentType.Button,
-                                label: "",
+                                label: " ",
                                 style: ButtonStyle.Secondary,
                                 custom_id: "play-computer-0",
                             },
                             {
                                 type: ComponentType.Button,
-                                label: "",
+                                label: " ",
                                 style: ButtonStyle.Secondary,
                                 custom_id: "play-computer-1",
                             },
                             {
                                 type: ComponentType.Button,
-                                label: "",
+                                label: " ",
                                 style: ButtonStyle.Secondary,
                                 custom_id: "play-computer-2",
                             },
@@ -61,19 +61,19 @@ export default async function(
                         components: [
                             {
                                 type: ComponentType.Button,
-                                label: "",
+                                label: " ",
                                 style: ButtonStyle.Secondary,
                                 custom_id: "play-computer-3",
                             },
                             {
                                 type: ComponentType.Button,
-                                label: "",
+                                label: " ",
                                 style: ButtonStyle.Secondary,
                                 custom_id: "play-computer-4",
                             },
                             {
                                 type: ComponentType.Button,
-                                label: "",
+                                label: " ",
                                 style: ButtonStyle.Secondary,
                                 custom_id: "play-computer-5",
                             },
@@ -84,19 +84,19 @@ export default async function(
                         components: [
                             {
                                 type: ComponentType.Button,
-                                label: "",
+                                label: " ",
                                 style: ButtonStyle.Secondary,
                                 custom_id: "play-computer-6",
                             },
                             {
                                 type: ComponentType.Button,
-                                label: "",
+                                label: " ",
                                 style: ButtonStyle.Secondary,
                                 custom_id: "play-computer-7",
                             },
                             {
                                 type: ComponentType.Button,
-                                label: "",
+                                label: " ",
                                 style: ButtonStyle.Secondary,
                                 custom_id: "play-computer-8",
                             },
