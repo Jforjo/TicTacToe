@@ -67,18 +67,17 @@ export async function POST(
                 { status: 404 }
             );
         }
+    } else if (interaction.type === InteractionType.MessageComponent) {
+        const { default: command } = await import(`@/discord/commands/component/${interaction.data.custom_id.split('-')[0].toLowerCase()}.ts`);
+        if (command) {
+            return await command(interaction);
+        } else {
+            return NextResponse.json(
+                { success: false, error: 'Unknown Command', },
+                { status: 404 }
+            );
+        }
     }
-    // else if (interaction.type === InteractionType.MessageComponent) {
-    //     const { default: command } = await import(`@/discord/commands/component/${interaction.data.custom_id.split('-')[0].toLowerCase()}.ts`);
-    //     if (command) {
-    //         return await command(interaction);
-    //     } else {
-    //         return NextResponse.json(
-    //             { success: false, error: 'Unknown Command', },
-    //             { status: 404 }
-    //         );
-    //     }
-    // }
     return NextResponse.json(
         { success: false, error: 'Unknown Command Type', },
         { status: 404 }
