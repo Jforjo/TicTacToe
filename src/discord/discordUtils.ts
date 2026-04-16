@@ -28,17 +28,22 @@ export async function InstallGlobalCommands(
     commands: RESTPutAPIApplicationCommandsJSONBody,
     retryCount: number = 0
 ): Promise<RESTPutAPIApplicationCommandsResult | undefined> {
-    if (!process.env.DISCORD_CLIENT_ID) throw new Error('DISCORD_CLIENT_ID is not defined');
-    if (!process.env.DISCORD_TOKEN) throw new Error('DISCORD_TOKEN is not defined');
+    if (process.env.NODE_ENV === 'development') {
+        if (!process.env.NEXT_PUBLIC_DISCORD_CLIENT_ID) throw new Error('NEXT_PUBLIC_DISCORD_CLIENT_ID is not defined');
+        if (!process.env.NEXT_PUBLIC_DISCORD_TOKEN) throw new Error('NEXT_PUBLIC_DISCORD_TOKEN is not defined');
+    } else {
+        if (!process.env.DISCORD_CLIENT_ID) throw new Error('DISCORD_CLIENT_ID is not defined');
+        if (!process.env.DISCORD_TOKEN) throw new Error('DISCORD_TOKEN is not defined');
+    }
 
     if (retryCount > 5) return;
     
-    const endpoint = Routes.applicationCommands(process.env.DISCORD_CLIENT_ID);
+    const endpoint = Routes.applicationCommands(process.env.NODE_ENV === 'development' ? process.env.NEXT_PUBLIC_DISCORD_CLIENT_ID! : process.env.DISCORD_CLIENT_ID!);
     const url = RouteBases.api + endpoint;
 
     const res = await fetch(url, {
         headers: {
-            Authorization: `Bot ${process.env.DISCORD_TOKEN}`,
+            Authorization: `Bot ${process.env.NODE_ENV === 'development' ? process.env.NEXT_PUBLIC_DISCORD_TOKEN! : process.env.DISCORD_TOKEN!}`,
             'Content-Type': 'application/json',
         },
         method: 'PUT',
@@ -80,8 +85,13 @@ export async function CreateInteractionResponse(
     token: Snowflake,
     messageData: RESTPostAPIInteractionCallbackJSONBody
 ): Promise<RESTPostAPIInteractionCallbackWithResponseResult | undefined> {
-    if (!process.env.DISCORD_CLIENT_ID) throw new Error('DISCORD_CLIENT_ID is not defined');
-    if (!process.env.DISCORD_TOKEN) throw new Error('DISCORD_TOKEN is not defined');
+    if (process.env.NODE_ENV === 'development') {
+        if (!process.env.NEXT_PUBLIC_DISCORD_CLIENT_ID) throw new Error('NEXT_PUBLIC_DISCORD_CLIENT_ID is not defined');
+        if (!process.env.NEXT_PUBLIC_DISCORD_TOKEN) throw new Error('NEXT_PUBLIC_DISCORD_TOKEN is not defined');
+    } else {
+        if (!process.env.DISCORD_CLIENT_ID) throw new Error('DISCORD_CLIENT_ID is not defined');
+        if (!process.env.DISCORD_TOKEN) throw new Error('DISCORD_TOKEN is not defined');
+    }
 
     const endpoint = Routes.interactionCallback(id, token);
     const url = RouteBases.api + endpoint;
@@ -91,7 +101,7 @@ export async function CreateInteractionResponse(
 
     const res = await fetch(url, {
         headers: {
-            Authorization: `Bot ${process.env.DISCORD_TOKEN}`,
+            Authorization: `Bot ${process.env.NODE_ENV === 'development' ? process.env.NEXT_PUBLIC_DISCORD_TOKEN! : process.env.DISCORD_TOKEN!}`,
         },
         method: 'POST',
         body: formData,
@@ -142,10 +152,15 @@ export async function FollowupMessage(
     }[] | null,
     isComponentV2: boolean = false
 ): Promise<RESTPatchAPIWebhookWithTokenMessageResult | undefined> {
-    if (!process.env.DISCORD_CLIENT_ID) throw new Error('DISCORD_CLIENT_ID is not defined');
-    if (!process.env.DISCORD_TOKEN) throw new Error('DISCORD_TOKEN is not defined');
+    if (process.env.NODE_ENV === 'development') {
+        if (!process.env.NEXT_PUBLIC_DISCORD_CLIENT_ID) throw new Error('NEXT_PUBLIC_DISCORD_CLIENT_ID is not defined');
+        if (!process.env.NEXT_PUBLIC_DISCORD_TOKEN) throw new Error('NEXT_PUBLIC_DISCORD_TOKEN is not defined');
+    } else {
+        if (!process.env.DISCORD_CLIENT_ID) throw new Error('DISCORD_CLIENT_ID is not defined');
+        if (!process.env.DISCORD_TOKEN) throw new Error('DISCORD_TOKEN is not defined');
+    }
 
-    const endpoint = Routes.webhookMessage(process.env.DISCORD_CLIENT_ID, token, "@original");
+    const endpoint = Routes.webhookMessage(process.env.NODE_ENV === 'development' ? process.env.NEXT_PUBLIC_DISCORD_CLIENT_ID! : process.env.DISCORD_CLIENT_ID!, token, "@original");
     const url = RouteBases.api + endpoint + (isComponentV2 ? '?with_components=true' : '');
 
     const formData = new FormData();
@@ -159,7 +174,7 @@ export async function FollowupMessage(
 
     const res = await fetch(url, {
         headers: {
-            Authorization: `Bot ${process.env.DISCORD_TOKEN}`,
+            Authorization: `Bot ${process.env.NODE_ENV === 'development' ? process.env.NEXT_PUBLIC_DISCORD_TOKEN! : process.env.DISCORD_TOKEN!}`,
         },
         method: 'PATCH',
         body: formData,
