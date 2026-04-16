@@ -24,7 +24,7 @@ export default async function(
         components: [
             {
                 type: ComponentType.Container,
-                accent_color: 0xFB9B00,
+                accent_color: 0x999999,
                 components: [
                     {
                         type: ComponentType.TextDisplay,
