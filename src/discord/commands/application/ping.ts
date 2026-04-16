@@ -1,5 +1,5 @@
 import { APIChatInputApplicationCommandInteraction, APIInteractionResponse, ApplicationCommandType, ComponentType, InteractionResponseType, MessageFlags } from "discord-api-types/v10";
-import { ConvertSnowflakeToDate, CreateInteractionResponse, FollowupMessage } from "../discordUtils";
+import { ConvertSnowflakeToDate, CreateInteractionResponse, FollowupMessage } from "../../discordUtils";
 import { NextResponse } from "next/server";
 
 export default async function(
