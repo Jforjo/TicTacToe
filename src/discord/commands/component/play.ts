@@ -95,9 +95,6 @@ export default async function(
 
     const timestamp = ConvertSnowflakeToDate(interaction.id);
 
-    console.log("board:", board);
-    console.log("newBoard:", newBoard);
-
     await CreateInteractionResponse(interaction.id, interaction.token, {
         type: InteractionResponseType.UpdateMessage,
         data: {
@@ -198,7 +195,7 @@ export default async function(
 
 
     return NextResponse.json(
-        { success: false, error: "Not implemented" },
-        { status: 501 }
+        { success: false },
+        { status: 200 }
     );
 }
