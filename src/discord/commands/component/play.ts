@@ -1,5 +1,5 @@
 import { ConvertSnowflakeToDate, CreateInteractionResponse } from "@/discord/discordUtils";
-import { convertDecodeBoard, convertEncodeBoard, getNextMove } from "@/discord/tictactoeNextMove";
+import { convertDecodeBoard, convertEncodeBoard, getNextMove, isBoardFull } from "@/discord/tictactoeNextMove";
 import { APIComponentInContainer, APIInteractionResponse, APIMessageComponentButtonInteraction, ButtonStyle, ComponentType, InteractionResponseType, MessageFlags } from "discord-api-types/v10";
 import { NextResponse } from "next/server";
 
@@ -75,6 +75,38 @@ export default async function(
 
     const board = convertDecodeBoard(boardState);
     const newBoardTemp = board.substring(0, parseInt(params[1])) + '1' + board.substring(parseInt(params[1]) + 1);
+    if (isBoardFull(newBoardTemp)) {
+        await CreateInteractionResponse(interaction.id, interaction.token, {
+            type: InteractionResponseType.ChannelMessageWithSource,
+            data: {
+                flags: MessageFlags.Ephemeral,
+                components: interaction.message.components.map((component) => {
+                    if (component.type !== ComponentType.Container) return component;
+                    return {
+                        ...component,
+                        components: component.components.map((childComponent) => {
+                            if (childComponent.type !== ComponentType.ActionRow) return childComponent;
+                            return {
+                                ...childComponent,
+                                components: childComponent.components.map((grandchildComponent) => {
+                                    if (grandchildComponent.type !== ComponentType.Button) return grandchildComponent;
+                                    return {
+                                        ...grandchildComponent,
+                                        disabled: true,
+                                    };
+                                }),
+                            };
+                        }),
+                    };
+                })
+            }
+        });
+        return NextResponse.json(
+            { success: false, error: "The board is full" },
+            { status: 400 }
+        );
+    }
+    
     const nextMove = getNextMove(newBoardTemp, '2');
     if (newBoardTemp[nextMove] !== '0') {
         await CreateInteractionResponse(interaction.id, interaction.token, {
