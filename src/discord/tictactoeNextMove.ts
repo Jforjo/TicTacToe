@@ -96,7 +96,16 @@ export function isWinningBoard(board: string, player: '1' | '2'): boolean {
         [0, 4, 8], // Diagonal from top-left to bottom-right
         [2, 4, 6], // Diagonal from top-right to bottom-left
     ];
-    return winningCombinations.some((combination) => combination.every((index) => board[index] === player));
+    for (let i = 0; i < winningCombinations.length; i++) {
+        const [a, b, c] = winningCombinations[i];
+        if (!board[a] || !board[b] || !board[c]) {
+            throw new Error(`Invalid board: cell ${!board[a] ? a : !board[b] ? b : c} is empty. Board must only contain '0', '1', and '2'.`);
+        }
+        if (board[a] === player && board[b] === player && board[c] === player) {
+            return true;
+        }
+    }
+    return false;
 }
 
 /**
