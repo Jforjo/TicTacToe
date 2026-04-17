@@ -144,7 +144,7 @@ export default async function(
                                 components: childComponent.components.map((grandchildComponent) => {
                                     if (grandchildComponent.type !== ComponentType.Button) return grandchildComponent;
                                     if (grandchildComponent.style !== ButtonStyle.Secondary) return grandchildComponent;
-                                    if (grandchildComponent.label === "\u200b") return {
+                                    if (grandchildComponent.label === "\u200b" && grandchildComponent.custom_id === `play-${nextMove}-${boardState}`) return {
                                         ...grandchildComponent,
                                         label: "O",
                                         disabled: true,
