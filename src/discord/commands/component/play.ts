@@ -1,6 +1,7 @@
 import { ConvertSnowflakeToDate, CreateInteractionResponse } from "@/discord/discordUtils";
 import { convertDecodeBoard, convertEncodeBoard, getNextMove, isBoardFull, isWinningBoard } from "@/discord/tictactoeNextMove";
-import { APIComponentInContainer, APIInteractionResponse, APIMessageComponentButtonInteraction, ButtonStyle, ComponentType, InteractionResponseType, MessageFlags } from "discord-api-types/v10";
+import { MAIN_COLOUR } from "@/discord/utils";
+import { APIInteractionResponse, APIMessageComponentButtonInteraction, ButtonStyle, ComponentType, InteractionResponseType, MessageFlags } from "discord-api-types/v10";
 import { NextResponse } from "next/server";
 
 export default async function(
@@ -82,7 +83,8 @@ export default async function(
                 components: interaction.message.components.map((component) => {
                     if (component.type !== ComponentType.Container) return component;
                     return {
-                        ...component,
+                        type: ComponentType.Container,
+                        accent_color: MAIN_COLOUR,
                         components: component.components.map((childComponent) => {
                             if (childComponent.type !== ComponentType.ActionRow) return childComponent;
                             return {
@@ -136,7 +138,7 @@ export default async function(
                     if (component.type !== ComponentType.Container) return component;
                     return {
                         type: ComponentType.Container,
-                        accent_color: 0x999999,
+                        accent_color: MAIN_COLOUR,
                         components: component.components.map((childComponent) => {
                             if (childComponent.type !== ComponentType.ActionRow) return childComponent;
                             return {
@@ -173,7 +175,7 @@ export default async function(
             components: [
                 {
                     type: ComponentType.Container,
-                    accent_color: 0x999999,
+                    accent_color: MAIN_COLOUR,
                     components: [
                         {
                             type: ComponentType.TextDisplay,

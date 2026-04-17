@@ -1,6 +1,7 @@
 import { APIChatInputApplicationCommandInteraction, APIInteractionResponse, ApplicationCommandOptionType, ApplicationCommandType, ButtonStyle, ComponentType, InteractionResponseType, MessageFlags } from "discord-api-types/v10";
 import { ConvertSnowflakeToDate, CreateInteractionResponse, FollowupMessage } from "../../discordUtils";
 import { NextResponse } from "next/server";
+import { MAIN_COLOUR } from "@/discord/utils";
 
 export default async function(
     interaction: APIChatInputApplicationCommandInteraction
@@ -24,7 +25,7 @@ export default async function(
         components: [
             {
                 type: ComponentType.Container,
-                accent_color: 0x999999,
+                accent_color: MAIN_COLOUR,
                 components: [
                     {
                         type: ComponentType.TextDisplay,
