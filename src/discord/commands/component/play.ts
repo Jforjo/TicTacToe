@@ -129,7 +129,8 @@ export default async function(
                 components: interaction.message.components.map((component) => {
                     if (component.type !== ComponentType.Container) return component;
                     return {
-                        ...component,
+                        type: ComponentType.Container,
+                        accent_color: 0x999999,
                         components: component.components.map((childComponent) => {
                             if (childComponent.type !== ComponentType.ActionRow) return childComponent;
                             return {
