@@ -79,7 +79,7 @@ export default async function(
         await CreateInteractionResponse(interaction.id, interaction.token, {
             type: InteractionResponseType.ChannelMessageWithSource,
             data: {
-                content: `The computer move ${nextMove} is invalid!`,
+                content: `The computer move ${nextMove} is invalid! (board state: ${board})`,
                 flags: MessageFlags.Ephemeral,
             }
         });
