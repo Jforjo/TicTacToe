@@ -89,7 +89,8 @@ export default async function(
         );
     }
 
-    const newBoard = board.substring(0, nextMove) + '2' + board.substring(nextMove + 1);
+    const newBoardTemp = board.substring(0, nextMove) + '2' + board.substring(nextMove + 1);
+    const newBoard = newBoardTemp.substring(0, parseInt(params[1])) + '1' + newBoardTemp.substring(parseInt(params[1]) + 1);
     const newBoardState = convertEncodeBoard(newBoard);
 
     const timestamp = ConvertSnowflakeToDate(interaction.id);
