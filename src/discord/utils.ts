@@ -1,0 +1,1 @@
+export const MAIN_COLOUR = 0xffeb50;
