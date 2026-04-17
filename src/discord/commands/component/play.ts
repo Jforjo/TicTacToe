@@ -89,6 +89,12 @@ export default async function(
                                 ...childComponent,
                                 components: childComponent.components.map((grandchildComponent) => {
                                     if (grandchildComponent.type !== ComponentType.Button) return grandchildComponent;
+                                    if (grandchildComponent.style !== ButtonStyle.Secondary) return grandchildComponent;
+                                    if (grandchildComponent.label === "\u200b") return {
+                                        ...grandchildComponent,
+                                        label: "X",
+                                        disabled: true,
+                                    }
                                     return {
                                         ...grandchildComponent,
                                         disabled: true,
@@ -137,6 +143,12 @@ export default async function(
                                 ...childComponent,
                                 components: childComponent.components.map((grandchildComponent) => {
                                     if (grandchildComponent.type !== ComponentType.Button) return grandchildComponent;
+                                    if (grandchildComponent.style !== ButtonStyle.Secondary) return grandchildComponent;
+                                    if (grandchildComponent.label === "\u200b") return {
+                                        ...grandchildComponent,
+                                        label: "O",
+                                        disabled: true,
+                                    }
                                     return {
                                         ...grandchildComponent,
                                         disabled: true,
