@@ -95,6 +95,9 @@ export default async function(
 
     const timestamp = ConvertSnowflakeToDate(interaction.id);
 
+    console.log("board:", board);
+    console.log("newBoard:", newBoard);
+
     await CreateInteractionResponse(interaction.id, interaction.token, {
         type: InteractionResponseType.UpdateMessage,
         data: {
