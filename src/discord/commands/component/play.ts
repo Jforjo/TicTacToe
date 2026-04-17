@@ -74,12 +74,13 @@ export default async function(
     // });
 
     const board = convertDecodeBoard(boardState);
-    const nextMove = getNextMove(board, '2');
-    if (board[nextMove] !== '0') {
+    const newBoardTemp = board.substring(0, parseInt(params[1])) + '1' + board.substring(parseInt(params[1]) + 1);
+    const nextMove = getNextMove(newBoardTemp, '2');
+    if (newBoardTemp[nextMove] !== '0') {
         await CreateInteractionResponse(interaction.id, interaction.token, {
             type: InteractionResponseType.ChannelMessageWithSource,
             data: {
-                content: `The computer move ${nextMove} is invalid! (board state: ${board})`,
+                content: `The computer move ${nextMove} is invalid! (board state: ${newBoardTemp})`,
                 flags: MessageFlags.Ephemeral,
             }
         });
@@ -89,8 +90,7 @@ export default async function(
         );
     }
 
-    const newBoardTemp = board.substring(0, nextMove) + '2' + board.substring(nextMove + 1);
-    const newBoard = newBoardTemp.substring(0, parseInt(params[1])) + '1' + newBoardTemp.substring(parseInt(params[1]) + 1);
+    const newBoard = newBoardTemp.substring(0, nextMove) + '2' + newBoardTemp.substring(nextMove + 1);
     const newBoardState = convertEncodeBoard(newBoard);
 
     const timestamp = ConvertSnowflakeToDate(interaction.id);
