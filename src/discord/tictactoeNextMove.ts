@@ -145,6 +145,7 @@ export function getNextMove(board: string, player: '1' | '2'): number {
         if (board[i] === '0') {
             const newBoard = board.substring(0, i) + player + board.substring(i + 1);
             if (isWinningBoard(newBoard, player)) {
+                console.log("blocking player 1 win");
                 return i;
             }
         }
@@ -156,13 +157,18 @@ export function getNextMove(board: string, player: '1' | '2'): number {
         if (board[i] === '0') {
             const newBoard = board.substring(0, i) + opponent + board.substring(i + 1);
             if (isWinningBoard(newBoard, opponent)) {
+                console.log("blocking player 2 win");
                 return i;
             }
         }
     }
 
     // If neither player can win in the next move, return a calculated move
-    if (nextMoves[board]) return nextMoves[board];
+    if (nextMoves[board]) {
+        console.log("calculated move");
+        return nextMoves[board];
+    }
     // If there are no calculated moves, return a random move
+    console.log("random move");
     return Math.floor(Math.random() * board.length);
 }
