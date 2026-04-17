@@ -40,42 +40,19 @@ export default async function(
                                 type: ComponentType.Button,
                                 label: "\u200b",
                                 style: ButtonStyle.Secondary,
-                                custom_id: "play-0",
+                                custom_id: "play-0-0",
                             },
                             {
                                 type: ComponentType.Button,
                                 label: "\u200b",
                                 style: ButtonStyle.Secondary,
-                                custom_id: "play-1",
+                                custom_id: "play-1-0",
                             },
                             {
                                 type: ComponentType.Button,
                                 label: "\u200b",
                                 style: ButtonStyle.Secondary,
-                                custom_id: "play-2",
-                            },
-                        ]
-                    },
-                    {
-                        type: ComponentType.ActionRow,
-                        components: [
-                            {
-                                type: ComponentType.Button,
-                                label: "\u200b",
-                                style: ButtonStyle.Secondary,
-                                custom_id: "play-3",
-                            },
-                            {
-                                type: ComponentType.Button,
-                                label: "\u200b",
-                                style: ButtonStyle.Secondary,
-                                custom_id: "play-4",
-                            },
-                            {
-                                type: ComponentType.Button,
-                                label: "\u200b",
-                                style: ButtonStyle.Secondary,
-                                custom_id: "play-5",
+                                custom_id: "play-2-0",
                             },
                         ]
                     },
@@ -86,19 +63,42 @@ export default async function(
                                 type: ComponentType.Button,
                                 label: "\u200b",
                                 style: ButtonStyle.Secondary,
-                                custom_id: "play-6",
+                                custom_id: "play-3-0",
                             },
                             {
                                 type: ComponentType.Button,
                                 label: "\u200b",
                                 style: ButtonStyle.Secondary,
-                                custom_id: "play-7",
+                                custom_id: "play-4-0",
                             },
                             {
                                 type: ComponentType.Button,
                                 label: "\u200b",
                                 style: ButtonStyle.Secondary,
-                                custom_id: "play-8",
+                                custom_id: "play-5-0",
+                            },
+                        ]
+                    },
+                    {
+                        type: ComponentType.ActionRow,
+                        components: [
+                            {
+                                type: ComponentType.Button,
+                                label: "\u200b",
+                                style: ButtonStyle.Secondary,
+                                custom_id: "play-6-0",
+                            },
+                            {
+                                type: ComponentType.Button,
+                                label: "\u200b",
+                                style: ButtonStyle.Secondary,
+                                custom_id: "play-7-0",
+                            },
+                            {
+                                type: ComponentType.Button,
+                                label: "\u200b",
+                                style: ButtonStyle.Secondary,
+                                custom_id: "play-8-0",
                             },
                         ]
                     },
