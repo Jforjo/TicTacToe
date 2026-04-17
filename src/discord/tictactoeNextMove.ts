@@ -67,7 +67,7 @@ export function convertDecodeBoard(board: number): string {
         result = (board % 3).toString() + result;
         board = Math.floor(board / 3);
     }
-    return result;
+    return result.padStart(9, '0');
 }
 
 /**
