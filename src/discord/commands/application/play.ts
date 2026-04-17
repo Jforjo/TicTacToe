@@ -40,19 +40,19 @@ export default async function(
                                 type: ComponentType.Button,
                                 label: "\u200b",
                                 style: ButtonStyle.Secondary,
-                                custom_id: "play-computer-0",
+                                custom_id: "play-0",
                             },
                             {
                                 type: ComponentType.Button,
                                 label: "\u200b",
                                 style: ButtonStyle.Secondary,
-                                custom_id: "play-computer-1",
+                                custom_id: "play-1",
                             },
                             {
                                 type: ComponentType.Button,
                                 label: "\u200b",
                                 style: ButtonStyle.Secondary,
-                                custom_id: "play-computer-2",
+                                custom_id: "play-2",
                             },
                         ]
                     },
@@ -63,19 +63,19 @@ export default async function(
                                 type: ComponentType.Button,
                                 label: "\u200b",
                                 style: ButtonStyle.Secondary,
-                                custom_id: "play-computer-3",
+                                custom_id: "play-3",
                             },
                             {
                                 type: ComponentType.Button,
                                 label: "\u200b",
                                 style: ButtonStyle.Secondary,
-                                custom_id: "play-computer-4",
+                                custom_id: "play-4",
                             },
                             {
                                 type: ComponentType.Button,
                                 label: "\u200b",
                                 style: ButtonStyle.Secondary,
-                                custom_id: "play-computer-5",
+                                custom_id: "play-5",
                             },
                         ]
                     },
@@ -86,22 +86,22 @@ export default async function(
                                 type: ComponentType.Button,
                                 label: "\u200b",
                                 style: ButtonStyle.Secondary,
-                                custom_id: "play-computer-6",
+                                custom_id: "play-6",
                             },
                             {
                                 type: ComponentType.Button,
                                 label: "\u200b",
                                 style: ButtonStyle.Secondary,
-                                custom_id: "play-computer-7",
+                                custom_id: "play-7",
                             },
                             {
                                 type: ComponentType.Button,
                                 label: "\u200b",
                                 style: ButtonStyle.Secondary,
-                                custom_id: "play-computer-8",
+                                custom_id: "play-8",
                             },
                         ]
-                    }, 
+                    },
                     {
                         type: ComponentType.Separator
                     },
